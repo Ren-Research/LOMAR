@@ -2,7 +2,7 @@
 
 Here we provide a brief tutorial about our [codebase](https://github.com/lyeskhalil/CORL). If you are already familiar with the codes and the framework, please skip this tutorial.
 
-## Bipartite Data Generation Code
+## 1. Bipartite Data Generation Code
 
 
 ### Supported Args
@@ -15,7 +15,7 @@ graph_family_parameter: ...
 ```
 Caution: We only list all the feasible parameters here, some combination may not be allowed (adwords + gmission), please check before using these arguments.
 
-## Networkx Guide
+## 2. Networkx Guide
 ### Print information for a graph
 ```python
 print(G)               
@@ -50,7 +50,7 @@ print(data.y)            # Optimal solution, (total_gain, action_array)
 print(data.edge_attr)    # None for this project
 ```
 
-## Important Arguments for the OBM codebase
+## 3. Important Arguments for the OBM codebase
 ```shell
 'load_path': 'path_to_pretrained_model',  # Model path
 'checkpoint_epochs': 0,                   # The frequency of routine checkpoint  saving
@@ -58,8 +58,8 @@ print(data.edge_attr)    # None for this project
 ```
 
 
-## RL Model For OBM 
-### Apply for a new GPU node
+## 4. RL Model For OBM 
+### Apply for a new GPU node in SLURM cluster (skip this step on your own server)
 ``` shell
 srun -p gpu --gres=gpu:1 --mem=100g --nodelist=gpu02 --time=48:00:00 --pty bash -l
 ```
@@ -88,8 +88,8 @@ python run.py --encoder mpnn --model inv-ff-hist --problem adwords --batch_size 
             --graph_family_parameter -1 --exp_beta 0.8 --ent_rate 0.0006
 ```
 
-### Evaluating the pretrained model
-Please first train the model, if you already have the model, you can use the following code to validate the performance. Don't forget to replace the load_path and other arguments accordingly.
+### Quick start - Evaluation
+* Note: Please first train the model, if you already have the model, you can use the following code to validate the performance. Don't forget to replace the load_path and other arguments accordingly.
 ```shell
 python3 run_lite.py --encoder mpnn --model inv-ff-hist-switch --problem osbm --batch_size 100 --embedding_dim 30 --n_heads 1 --u_size 10  --v_size 60 --n_epochs 300 --train_dataset dataset/train/osbm_movielense_default_-1_10by60/parameter_-1 --val_dataset dataset/val/osbm_movielense_default_-1_10by60/parameter_-1 --dataset_size 20000 --val_size 1000 --checkpoint_epochs 0 --baseline exponential  --lr_model 0.006 --lr_decay 0.97 --output_dir saved_models --log_dir logs_dataset --n_encode_layers 1 --save_dir saved_models/osbm_movielense_default_-1_10by60/parameter_-1 --graph_family_parameter -1 --exp_beta 0.8 --ent_rate 0.0006 --eval_only --no_tensorboard --load_path saved_models/inv-ff-hist/run_20220501T195416/best-model.pt --switch_lambda 0.0 --slackness 0.0 --max_reward 5.0
 ```
