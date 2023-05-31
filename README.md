@@ -21,14 +21,26 @@ cd LOMAR
 Then please refer to [the install guide](INSTALL.md) for more details about installation
 
 ## Usage 
+To apply our algorithm (LOMAR) in online bipartite matching, you need three main steps
+
 1. Generate graph dataset
 2. Train the RL model
 3. Evaluate the policy
+
+A script example for each step can be found in our brief [tutorial](TUTORIAL.md).
 
 ## Evaluation
 
 In our experiment, we set $u_0 = 10$ and $v_0 = 60$ to generate the training and testing datasets. The number of graph instances in the training and testing datasets are 20000 and 1000, respectively. For the sake of reproducibility and fair comparision, our settings follows the same setup of our [baseline](https://github.com/lyeskhalil/CORL). 
 
+| ![space-1.jpg](figures/table1.png) |
+|:--:|
+| Table 1: Comparison under different $\rho$. In the top, LOMAR ($\rho = x$) means LOMAR is trained with the value of $\rho = x$. The average reward and competitive ratio are represented by AVG and CR, respectively — the higher, the better. The highest value in each testing setup is highlighted in bold. The AVG and CR for DRL are <b> 12.909 </b> and <b>0.544 </b> respectively. The average reward for OPT is <b> 13.209 </b> .|
+
+
+| ![space-1.jpg](figures/histogram.png) |
+|:--:|
+| Figure 1: Histogram of bi-competitive reward ratios of DRL-OS against Greedy and DRL under different $\rho$. The DRL-OS has the same online switching algorithm as LOMAR, while the RL model is trained with $\rho=0$. |
 
 ## Citation
 ```BibTex
