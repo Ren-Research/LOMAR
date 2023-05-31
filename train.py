@@ -56,13 +56,13 @@ def evaluate(models, dataset, opts):
     return avg_cost, min_cr.item(), avg_cr, cr, p, p1, p2, count1, count2, avg_j, wil
 
 
-def validate(model, dataset, opts):
+def validate(model, dataset, opts, debug = False):
     # Validate
     print("Validating...")
 
     cost, cr, loss = rollout(model, dataset, opts)
 
-    if True:
+    if debug:
         pkl_path  = "saved_models/policy_compare/"
         pkl_path += "__".join(opts.load_path.split("/")[1:3]) + "_lambda_{:.2f}.pkl".format(opts.switch_lambda)
         # result = {"Cost": cost.cpu(), "Cost Ratio": cr.cpu(), "Policy": pi_list.cpu()}
@@ -227,7 +227,7 @@ def rollout_eval(models, dataset, opts):
     )
 
 
-def rollout(model, dataset, opts, group = True):
+def rollout(model, dataset, opts, group = False):
     # Set `group` as True to enable virtual free-disposal setup
 
     # Put in greedy evaluation mode!
@@ -553,7 +553,7 @@ def train_batch(
 
     # Evaluate model, get costs and log probabilities
 
-    cost, log_likelihood, e = model(x, opts, optimizers, baseline)
+    cost, log_likelihood, e = model(x, opts, optimizers, baseline, return_pi=False)
     # Evaluate baseline, get baseline loss if any (only for critic)
     bl_val, bl_loss = baseline.eval(x, cost) if bl_val is None else (bl_val, 0)
 
