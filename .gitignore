@@ -1,5 +1,17 @@
+
+dataset/**
+dataset
 data/__pycache__/**
 policy/__pycache__/**
 
+# Output folders
+logs_dataset/**
+saved_models/**
+saved_models
+
+
 **.pyc
+
+
+
 
