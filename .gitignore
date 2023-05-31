@@ -1,0 +1,5 @@
+data/__pycache__/**
+policy/__pycache__/**
+
+**.pyc
+
