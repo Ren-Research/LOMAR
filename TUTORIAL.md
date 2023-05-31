@@ -89,8 +89,9 @@ python run.py --encoder mpnn --model inv-ff-hist --problem adwords --batch_size 
 ```
 
 ### Evaluating the pretrained model
+Please first train the model, if you already have the model, you can use the following code to validate the performance. Don't forget to replace the load_path and other arguments accordingly.
 ```shell
-python3 run_lite.py --encoder mpnn --model inv-ff-hist --problem e-obm --batch_size 100 --embedding_dim 30 --n_heads 1 --u_size 10  --v_size 60 --n_epochs 300 --train_dataset dataset/train/e-obm_er_uniform_01_10by60/parameter_0.1 --val_dataset dataset/val/e-obm_er_uniform_01_10by60/parameter_0.1 --dataset_size 20000 --val_size 1000 --checkpoint_epochs 0 --baseline exponential --lr_model 0.006 --lr_decay 0.97 --output_dir saved_models --log_dir logs_dataset --n_encode_layers 1 --save_dir saved_models/e-obm_er_uniform_01_10by60/parameter_0.1 --graph_family_parameter 0.1 --exp_beta 0.8 --ent_rate 0.0006 --eval_only --no_tensorboard --load_path saved_models/inv-ff-hist/run_20220427T005503/latest-299.pt
+python3 run_lite.py --encoder mpnn --model inv-ff-hist-switch --problem osbm --batch_size 100 --embedding_dim 30 --n_heads 1 --u_size 10  --v_size 60 --n_epochs 300 --train_dataset dataset/train/osbm_movielense_default_-1_10by60/parameter_-1 --val_dataset dataset/val/osbm_movielense_default_-1_10by60/parameter_-1 --dataset_size 20000 --val_size 1000 --checkpoint_epochs 0 --baseline exponential  --lr_model 0.006 --lr_decay 0.97 --output_dir saved_models --log_dir logs_dataset --n_encode_layers 1 --save_dir saved_models/osbm_movielense_default_-1_10by60/parameter_-1 --graph_family_parameter -1 --exp_beta 0.8 --ent_rate 0.0006 --eval_only --no_tensorboard --load_path saved_models/inv-ff-hist/run_20220501T195416/best-model.pt --switch_lambda 0.0 --slackness 0.0 --max_reward 5.0
 ```
 
 
