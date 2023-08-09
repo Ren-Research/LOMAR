@@ -33,13 +33,13 @@ A script example for each step can be found in our brief [tutorial](TUTORIAL.md)
 
 In our experiment, we set $u_0 = 10$ and $v_0 = 60$ to generate the training and testing datasets. The number of graph instances in the training and testing datasets are 20000 and 1000, respectively. For the sake of reproducibility and fair comparision, our settings follows the same setup of our [baseline](https://github.com/lyeskhalil/CORL). 
 
-| ![space-1.jpg](./figures/table1.png) |
+| ![space-1.jpg](https://github.com/Ren-Research/LOMAR/blob/main/figures/table1.png) |
 |:--:|
 | Table 1: Comparison under different $\rho$. In the top, LOMAR ($\rho = x$) means LOMAR is trained with the value of $\rho = x$. The average reward and competitive ratio are represented by AVG and CR, respectively — the higher, the better. The highest value in each testing setup is highlighted in bold. The AVG and CR for DRL are <b> 12.909 </b> and <b>0.544 </b> respectively. The average reward for OPT is <b> 13.209 </b> .|
 
 The histogram of the bi-competitive ratios are visualized below. When $\rho = 0$, the ratio of DRL-OS / DRL is always 1 unsurprisingly. With a large $\rho$ (e.g. 0.8) for testing, the reward ratios of DRL-OS/Greedy for most samples are around 1, but the flexibility of DRL-OS is limited and can less exploit the good average performance of DRL. 
 
-| ![space-1.jpg](./figures/histogram.png) |
+| ![space-1.jpg](https://github.com/Ren-Research/LOMAR/blob/main/figures/histogram.png) |
 |:--:|
 | Figure 1: Histogram of bi-competitive reward ratios of DRL-OS against Greedy and DRL under different $\rho$. The DRL-OS has the same online switching algorithm as LOMAR, while the RL model is trained with $\rho=0$. |
 
